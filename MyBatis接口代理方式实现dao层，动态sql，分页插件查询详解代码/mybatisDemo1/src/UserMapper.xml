@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.cdw.demo.mapper.UserMapper">
+    <sql id="query">
+        select * from user
+    </sql>
+
+    <select id="findAllByPage" resultType="user">
+        <include refid="query"/>
+    </select>
+
+    <select id="findById" resultType="user" parameterType="int">
+        select * from user where  id = #{id};
+    </select>
+
+    <select id="findByCondition" resultType="user" parameterType="user">
+        select * from user
+        <where>
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test="name != null">
+                and name = #{name}
+            </if>
+            <if test="age != null">
+                and age = #{age}
+            </if>
+        </where>
+    </select>
+
+    <select id="findByIds" parameterType="list" resultType="user">
+        select * from user
+        <where>
+            <foreach collection="list" open="id in (" close=")" item="id" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </select>
+
+</mapper>

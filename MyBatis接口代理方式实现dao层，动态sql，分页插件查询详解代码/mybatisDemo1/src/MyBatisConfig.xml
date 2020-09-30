@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <properties resource="jdbc.properties"/><!--读取配置文件-->
+
+    <settings>
+        <setting name="logImpl" value="log4j"/>
+    </settings>
+
+    <typeAliases><!--配置别名-->
+        <package name="cn.cdw.demo.pojo"/>
+    </typeAliases>
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor"></plugin><!--分页插件助手-->
+    </plugins>
+
+    <environments default="mysql">
+        <environment id="mysql"><!--配置环境变量-->
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="UserMapper.xml"/><!--引入映射文件-->
+    </mappers>
+</configuration>
+

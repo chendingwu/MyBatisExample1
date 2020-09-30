@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <properties resource="jdbc.properties"/><!--引入jdbc连接数据库核心配置文件-->
+
+    <settings>
+        <setting name="logImpl" value="log4j"/><!--在MyBatis中配置核心配置文件-->
+    </settings>
+
+    <typeAliases>
+        <!--<typeAlias type="cn.cdw.example.User" alias="user"/>--><!--在核心配置文件设置别名，我们就可以咋映射文件中使用别名了-->
+        <package name="cn.cdw.example"/><!--如果需要定义包下多个类的别名，那么使用指定包即可，别名为类名的首字母小写-->
+    </typeAliases>
+
+    <environments default="environment1">
+        <environment id="environment1"><!--配置环境变量-->
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers><!--引入映射文件-->
+        <mapper resource="UserMapper.xml"></mapper>
+    </mappers>
+</configuration>
+

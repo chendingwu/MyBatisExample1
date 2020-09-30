@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jsqlparser-1.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/jsqlparser-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libs/pagehelper-5.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
